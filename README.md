@@ -97,7 +97,7 @@ A full-stack food ordering application that allows users to discover restaurants
 - REST API
 - Vite
 
-🔗 **Live Demo:** [View Project](YOUR_FOODHUB_URL)
+🔗 **Live Demo:** []()
 
 🔗 **Source Code:** [GitHub](YOUR_FOODHUB_GITHUB_URL)
 
