@@ -167,3 +167,6 @@ To run this portfolio locally, follow the steps below.
 
 ```bash
 git clone 
+
+**Live Demo:** [kaweesi-portfolio-qx1sz1w1s-kaweesimatias-projects.vercel.app](https://github.com/Kaweesi-Matia/kaweesi-portfolio)
+
