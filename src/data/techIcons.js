@@ -1,0 +1,28 @@
+const techIcons = {
+  React: "/icons/react.svg",
+  "React Native": "/icons/react-native.svg",
+  "Node.js": "/icons/nodejs.svg",
+  TypeScript: "/icons/typescript.svg",
+  JavaScript: "/icons/javascript.svg",
+  PostgreSQL: "/icons/postgresql.svg",
+  PHP: "/icons/php.svg",
+  HTML: "/icons/html.svg",
+  CSS: "/icons/css-3.svg",
+  Jest: "/icons/jest.svg",
+  Supertest: "/icons/supertest.png",
+  GitHub: "/icons/github.svg",
+  WordPress: "/icons/wordpress.svg",
+  Supabase: "/icons/supabase.svg",
+  "REST API": "/icons/rest-api.webp",
+  "Google Maps": "/icons/google-maps.svg",
+  Agile: "/icons/Agile.png",
+  "Tailwind CSS": "/icons/tailwind-css.svg",
+  Bootstrap: "/icons/bootstrap.svg",
+  "Next.js": "/icons/nextjs.svg",
+  Lighthouse: "/icons/google-lighthouse.svg",
+  Slack: "/icons/slack.svg",
+  Figma: "/icons/figma.svg",
+  NPM: "/icons/npm.svg",
+};
+
+export default techIcons;
