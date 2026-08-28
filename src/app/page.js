@@ -23,7 +23,7 @@ export default function Home() {
               backend systems using technologies such as MongoDB, SQL, and Git.
               I write clean, maintainable, and scalable code and leverage AI
               technologies to build intelligent solutions that address
-              real-world problems..
+              real-world problems.
             </p>
           </div>
 
