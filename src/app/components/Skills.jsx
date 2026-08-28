@@ -1,6 +1,7 @@
 export default function Skills() {
   const tech = [
     { name: "JavaScript", icon: "/icons/javascript.svg" },
+    { name: "Python", icon: "/icons/python.svg" },
     { name: "HTML", icon: "/icons/html.svg" },
     { name: "CSS", icon: "/icons/css-3.svg" },
     { name: "TypeScript", icon: "/icons/typescript.svg" },
@@ -10,8 +11,10 @@ export default function Skills() {
     { name: "Node.js", icon: "/icons/nodejs.svg" },
     { name: "Next.js", icon: "/icons/nextjs.svg" },
     { name: "PHP", icon: "/icons/php.svg" },
+    { name: "MYSQL", icon: "/icons/mysql.svg" },
     { name: "WordPress", icon: "/icons/wordpress.svg" },
     { name: "Tailwind CSS", icon: "/icons/tailwind-css.svg" },
+    { name: "FASTAPI", icon: "/icons/fastapi.svg" },
     { name: "Bootstrap", icon: "/icons/bootstrap.svg" },
     { name: "GitHub", icon: "/icons/github.svg" },
     // Jest, Agile?,

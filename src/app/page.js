@@ -16,10 +16,13 @@ export default function Home() {
               </span>
             </h1>
             <p className="text-lg text-gray-700 mt-2 py-6">
-              I’m a full-stack developer experienced in building modern web
-              applications using React, JavaScript, Node.js, and Ruby on Rails.
-              I build intuitive user experiences, write clean, scalable, and
-              maintainable code, and develop AI-powered solutions that solve
+              I’m a full-stack software developer experienced in building modern,
+              scalable web applications using React, JavaScript, Node.js,
+              Python, FastAPI, and Ruby on Rails. I specialize in developing
+              robust REST APIs, responsive user experiences, and reliable
+              backend systems using technologies such as MongoDB, SQL, and Git.
+              I write clean, maintainable, and scalable code and leverage AI
+              technologies to build intelligent solutions that address
               real-world problems.
             </p>
           </div>

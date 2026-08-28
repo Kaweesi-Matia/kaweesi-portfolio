@@ -2,18 +2,20 @@ import Link from "next/link";
 import Image from "next/image";
 
 export default function About() {
-  const topTech = [
-    { name: "JavaScript", icon: "/icons/javascript.svg" },
-    { name: "React", icon: "/icons/react.svg" },
-    { name: "PHP", icon: "/icons/php.svg" },
-    { name: "WordPress", icon: "/icons/wordpress.svg" },
-    { name: "PostgreSQL", icon: "/icons/postgresql.svg" },
-    { name: "Node.js", icon: "/icons/nodejs.svg" },
-    { name: "Next.js", icon: "/icons/nextjs.svg" },
-    { name: "TypeScript", icon: "/icons/typescript.svg" },
-    { name: "HTML", icon: "/icons/html.svg" },
-    { name: "CSS", icon: "/icons/css-3.svg" },
-  ];
+ const topTech = [
+  { name: "JavaScript", icon: "/icons/javascript.svg" },
+  { name: "React", icon: "/icons/react.svg" },
+  { name: "Python", icon: "/icons/python.svg" },
+  { name: "FastAPI", icon: "/icons/fastapi.svg" },
+  { name: "PHP", icon: "/icons/php.svg" },
+  { name: "WordPress", icon: "/icons/wordpress.svg" },
+  { name: "PostgreSQL", icon: "/icons/postgresql.svg" },
+  { name: "Node.js", icon: "/icons/nodejs.svg" },
+  { name: "Next.js", icon: "/icons/nextjs.svg" },
+  { name: "TypeScript", icon: "/icons/typescript.svg" },
+  { name: "HTML", icon: "/icons/html.svg" },
+  { name: "CSS", icon: "/icons/css-3.svg" },
+];
 
   return (
     <section className="max-w-5xl mx-auto py-20 space-y-24">
@@ -31,16 +33,8 @@ export default function About() {
         <div>
           <h1 className="text-4xl font-bold mb-4">About Me</h1>
           <p className="text-gray-700 leading-relaxed">
-            I’m a full-stack software developer with a strong foundation in
-            building modern, scalable web applications. My experience spans
-            frontend and backend development, working with technologies such as
-            React, JavaScript, Node.js, Ruby on Rails, and SQL. I enjoy turning
-            complex requirements into clean, intuitive, and reliable digital
-            solutions. I also build and integrate AI-powered solutions to
-            enhance applications, automate processes, and solve real-world
-            problems. Beyond development, I have experience mentoring and
-            teaching aspiring developers, which has strengthened my ability to
-            communicate technical ideas and collaborate effectively.
+           I’m a full-stack software developer with a strong foundation in building modern, scalable web applications. My experience spans frontend and backend development, working with technologies such as React, JavaScript, Python, FastAPI, Node.js, Ruby on Rails, and SQL. I enjoy turning complex requirements into clean, intuitive, and reliable digital solutions. I also build data-driven and AI-powered solutions using technologies such as Python and FastAPI to enhance applications, automate processes, and solve real-world problems. Beyond development, I have experience mentoring and teaching aspiring developers, which has strengthened my ability to communicate technical ideas and collaborate effectively.
+
           </p>
         </div>
       </div>
@@ -53,6 +47,26 @@ export default function About() {
             Build modern, responsive web applications using React, JavaScript,
             and Tailwind CSS
           </li>
+          <li>
+            Build high-performance backend services and RESTful APIs using
+            Python and FastAPI
+          </li>
+           <li>
+    Develop data-driven applications using Python, Pandas, PostgreSQL, and
+    SQLAlchemy
+  </li>
+  <li>
+    Design secure APIs with JWT authentication, role-based access control, and
+    scalable backend architecture
+  </li>
+   <li>
+    Integrate Python and FastAPI services with modern React frontends to build
+    complete full-stack applications
+  </li>
+  <li>
+    Develop and integrate AI-powered features to automate workflows and solve
+    real-world problems
+  </li>
           <li>
             Develop scalable full-stack applications with Node.js, Express, Ruby
             on Rails, and RESTful APIs
@@ -114,9 +128,8 @@ export default function About() {
             <ul className="list-disc pl-5 space-y-2 mt-2">
               <li>
                 <strong>Software Engineer · Veroskills (USA, Remote)</strong> —
-                Developed React frontends, Node.js/Express APIs, and
-                collaborated with cross-functional teams to deliver scalable web
-                applications.
+               Developed React frontends and backend services using Node.js/Express, Python, and FastAPI, while collaborating with cross-functional teams to deliver scalable web applications.
+
               </li>
               <li>
                 <strong>Code Reviewer · Microverse</strong> — Mentored junior
@@ -136,6 +149,9 @@ export default function About() {
               <li>
                 Full-stack MERN development, from responsive interfaces to
                 scalable backend systems
+              </li>
+              <li>
+                Full-stack application development using Python, FastAPI, and React, from modern user interfaces to secure, scalable backend APIs
               </li>
               <li>
                 Telecommunication engineering, software development, and modern
@@ -164,7 +180,7 @@ export default function About() {
         </p>
         <div className="flex justify-center gap-6">
           <a
-            href="/files/kaweesi__cv.pdf"
+            href="/files/kaweesi-cv.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
