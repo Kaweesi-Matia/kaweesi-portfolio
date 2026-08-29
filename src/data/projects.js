@@ -1,19 +1,17 @@
 const projects = [
   {
-   slug: "sales-analytics",
-title: "Sales Analytics— Business Intelligence & Sales Analytics Platform",
+    slug: "sales-analytics",
+    title: "Sales Analytics— Business Intelligence & Sales Analytics Platform",
     shortDesc:
       "Business intelligence platform for analyzing sales performance, revenue trends, products, customers, and business KPIs.",
     longDesc:
       "Designed and developed a full-stack business intelligence and sales analytics platform using React, FastAPI, Python, and PostgreSQL. The platform enables users to import and analyze sales data, monitor key performance indicators, identify revenue trends, and explore product and customer performance through interactive dashboards. Implemented RESTful APIs with FastAPI, data processing and analytical workflows with Python, relational data modeling with PostgreSQL, and interactive React dashboards for presenting business insights.",
     mainImage: "/images/projects/foodhub/sales-analytics-1.PNG",
     gallery: [
-       "/images/projects/foodhub/sales-analytics-1.PNG",
-       "/images/projects/foodhub/sales-analytics-2.PNG",
-       "/images/projects/foodhub/sales-analytics-3.PNG",
-       "/images/projects/foodhub/sales-analytics-4.PNG",
-      
-     
+      "/images/projects/foodhub/sales-analytics-1.PNG",
+      "/images/projects/foodhub/sales-analytics-2.PNG",
+      "/images/projects/foodhub/sales-analytics-3.PNG",
+      "/images/projects/foodhub/sales-analytics-4.PNG",
     ],
     tech: [
       "React",
@@ -49,15 +47,8 @@ title: "Sales Analytics— Business Intelligence & Sales Analytics Platform",
       "/images/projects/foodhub/foodhub-cart.PNG",
       "/images/projects/foodhub/foodHub-admin-img.PNG",
     ],
-    tech: [
-      "React",
-      "Node.js",
-      "Express",
-      "MongoDB",
-      "JavaScript",
-    ],
-    liveLink:
-      "https://food-gbmb16rpl-kaweesimatias-projects.vercel.app/",
+    tech: ["React", "Node.js", "Express", "MongoDB", "JavaScript"],
+    liveLink: "https://food-gbmb16rpl-kaweesimatias-projects.vercel.app/",
     repoLink: "https://github.com/Kaweesi-Matia/FoodHub",
   },
 
@@ -162,6 +153,45 @@ title: "Sales Analytics— Business Intelligence & Sales Analytics Platform",
     ],
     liveLink: "",
     repoLink: "https://github.com/Kaweesi-Matia/Learnova",
+  },
+  {
+    slug: "logiflow",
+    title: "LogiFlow — Logistics & Delivery Management System",
+    shortDesc:
+      "Full-stack logistics and delivery management system for managing deliveries, drivers, vehicles, customers, routes, and operational workflows.",
+    longDesc:
+      "Designed and developed a full-stack logistics and delivery management system using React, Vite, Python, FastAPI, and SQLAlchemy. The platform provides a modern interface for managing delivery operations, drivers, vehicles, customers, routes, and logistics workflows. Implemented secure JWT authentication and role-based access control, RESTful APIs with FastAPI, relational data management with SQLAlchemy, and responsive React interfaces for efficient logistics operations and management.",
+    mainImage:  "/images/projects/foodhub/logiflow-1.PNG",
+    gallery: [
+      "/images/projects/foodhub/logiflow-1.PNG",
+      "/images/projects/foodhub/logiflow-2.PNG",
+      "/images/projects/foodhub/logiflow-3.PNG",
+      "/images/projects/foodhub/logiflow-4.PNG",
+      "/images/projects/foodhub/logiflow-5.PNG",
+      "/images/projects/foodhub/logiflow-6.PNG",
+
+
+
+
+
+
+    ],
+    tech: [
+      "React",
+      "Vite",
+      "Python",
+      "FastAPI",
+      "SQLAlchemy",
+      "SQL",
+      "JWT",
+      "REST API",
+      "JavaScript",
+      "Git",
+      "GitHub",
+    ],
+    liveLink: "",
+    repoLink:
+      "https://github.com/Kaweesi-Matia/LogiFlow-Logistics-Delivery-Management-System",
   },
 ];
 
