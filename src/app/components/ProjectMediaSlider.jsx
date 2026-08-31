@@ -1,95 +1,82 @@
 "use client";
 
 import { useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function ProjectMediaSlider({ media = [] }) {
   const [index, setIndex] = useState(0);
+  if (!media.length) return null;
 
   const next = () => setIndex((i) => (i + 1) % media.length);
   const prev = () => setIndex((i) => (i - 1 + media.length) % media.length);
 
   return (
-    <div className="w-full mb-6">
-      {/* Cross-fading Media Container */}
-      <div
-        className="relative w-full overflow-hidden"
-        style={{ paddingTop: "56.25%" /* 16:9 aspect ratio */ }}
-      >
-        {media.map((src, i) => {
-          const isVideo = src.toLowerCase().endsWith(".mp4");
-          return (
-            <div
-              key={i}
-              className={`absolute inset-0 transition-opacity duration-300 ease-in-out ${
-                i === index ? "opacity-100 z-10" : "opacity-0 z-0"
-              }`}
-            >
-              {isVideo ? (
-                <video
-                  src={src}
-                  className="w-full h-full object-contain rounded"
-                  loop
-                  playsInline
-                  controls
-                  preload="metadata"
-                />
-              ) : (
-                <img
-                  src={src}
-                  alt={`Slide ${i + 1}`}
-                  className="w-full h-full object-contain rounded"
-                />
-              )}
-            </div>
-          );
-        })}
+    <div className="mb-10 w-full">
+      <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm">
+        <div className="relative w-full" style={{ paddingTop: "56.25%" }}>
+          {media.map((src, i) => {
+            const isVideo = src.toLowerCase().endsWith(".mp4");
+            return (
+              <div
+                key={src}
+                className={`absolute inset-0 transition-opacity duration-300 ${
+                  i === index ? "z-10 opacity-100" : "z-0 opacity-0"
+                }`}
+              >
+                {isVideo ? (
+                  <video
+                    src={src}
+                    className="h-full w-full object-contain"
+                    loop
+                    playsInline
+                    controls
+                    preload="metadata"
+                  />
+                ) : (
+                  <img
+                    src={src}
+                    alt={`Screenshot ${i + 1}`}
+                    className="h-full w-full object-contain object-top"
+                  />
+                )}
+              </div>
+            );
+          })}
+        </div>
 
-        {/* Arrows */}
         {media.length > 1 && (
           <>
             <button
               onClick={prev}
-              aria-label="Previous media"
-              className="absolute top-1/2 left-4 -translate-y-1/2 bg-[rgba(0,0,0,0.5)]
-                         hover:bg-[rgba(0,0,0,0.7)] text-3xl text-white w-12 h-12
-                         rounded-full flex items-center justify-center transition z-20 cursor-pointer"
+              aria-label="Previous screenshot"
+              className="absolute left-3 top-1/2 z-20 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-slate-900/70 text-white transition hover:bg-slate-900"
             >
-              ‹
+              <ChevronLeft className="h-5 w-5" />
             </button>
             <button
               onClick={next}
-              aria-label="Next media"
-              className="absolute top-1/2 right-4 -translate-y-1/2 bg-[rgba(0,0,0,0.5)]
-                         hover:bg-[rgba(0,0,0,0.7)] text-3xl text-white w-12 h-12
-                         rounded-full flex items-center justify-center transition z-20 cursor-pointer"
+              aria-label="Next screenshot"
+              className="absolute right-3 top-1/2 z-20 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-slate-900/70 text-white transition hover:bg-slate-900"
             >
-              ›
+              <ChevronRight className="h-5 w-5" />
             </button>
           </>
         )}
       </div>
 
-      {/* Indicators */}
       {media.length > 1 && (
-        <div className="flex justify-center items-center gap-2 mt-2 w-full">
-          {media.map((_, i) => {
-            const total = media.length;
-            const activeWidth = 40;
-            const inactiveWidth = 60 / (total - 1);
-            const widthPercent =
-              i === index ? `${activeWidth}%` : `${inactiveWidth}%`;
-
-            return (
-              <span
-                key={i}
-                style={{ width: widthPercent }}
-                className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                  i === index ? "bg-black" : "bg-gray-400"
-                }`}
-                onClick={() => setIndex(i)}
-              />
-            );
-          })}
+        <div className="mt-3 flex justify-center gap-1.5">
+          {media.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              aria-label={`Go to screenshot ${i + 1}`}
+              onClick={() => setIndex(i)}
+              className={`h-1.5 rounded-full transition-all ${
+                i === index ? "w-8 bg-indigo-600" : "w-2.5 bg-slate-300"
+              }`}
+            />
+          ))}
         </div>
       )}
     </div>

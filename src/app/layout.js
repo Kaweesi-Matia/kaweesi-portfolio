@@ -6,21 +6,42 @@ import FadeInWrapper from "./components/FadeInWrapper";
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-poppins",
 });
 
 export const metadata = {
-  title: "Kaweesi Matia | Full-Stack Software Developer",
-  description: "Full Stack Web Developer portfolio site with projects and info",
+  title: {
+    default: "Kaweesi Matia | Full-Stack Software Engineer",
+    template: "%s | Kaweesi Matia",
+  },
+  description:
+    "Full-stack software engineer building real-world applications, data systems, and AI-ready products with React, Node.js, Python, and FastAPI.",
+  keywords: [
+    "Kaweesi Matia",
+    "Full-Stack Developer",
+    "React",
+    "FastAPI",
+    "Node.js",
+    "Python",
+    "Software Engineer",
+  ],
+  authors: [{ name: "Kaweesi Matia" }],
+  openGraph: {
+    title: "Kaweesi Matia | Full-Stack Software Engineer",
+    description:
+      "Real-world applications, data systems, and AI-ready products. React, Node.js, Python, FastAPI.",
+    type: "website",
+    locale: "en_US",
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={poppins.variable}>
-      <body className="bg-white text-gray-900">
+      <body className="min-h-screen bg-slate-50 text-slate-900 antialiased">
         <Header />
-        <main className="mx-auto max-w-7xl px-6 md:px-16 lg:px-40">
+        <main className="shell py-8 sm:py-10 lg:py-12">
           <FadeInWrapper>{children}</FadeInWrapper>
         </main>
         <Footer />
