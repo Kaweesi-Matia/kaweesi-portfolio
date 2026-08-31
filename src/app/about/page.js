@@ -1,197 +1,171 @@
 import Link from "next/link";
 import Image from "next/image";
+import Experience from "../components/Experience";
 
-export default function About() {
- const topTech = [
+const topTech = [
   { name: "JavaScript", icon: "/icons/javascript.svg" },
   { name: "React", icon: "/icons/react.svg" },
   { name: "Python", icon: "/icons/python.svg" },
   { name: "FastAPI", icon: "/icons/fastapi.svg" },
-  { name: "PHP", icon: "/icons/php.svg" },
-  { name: "WordPress", icon: "/icons/wordpress.svg" },
-  { name: "PostgreSQL", icon: "/icons/postgresql.svg" },
   { name: "Node.js", icon: "/icons/nodejs.svg" },
   { name: "Next.js", icon: "/icons/nextjs.svg" },
   { name: "TypeScript", icon: "/icons/typescript.svg" },
-  { name: "HTML", icon: "/icons/html.svg" },
-  { name: "CSS", icon: "/icons/css-3.svg" },
+  { name: "PostgreSQL", icon: "/icons/postgresql.svg" },
 ];
 
+export const metadata = {
+  title: "About",
+  description:
+    "Background, experience, and working style of Kaweesi Matia, full-stack software and AI developer.",
+};
+
+export default function About() {
   return (
-    <section className="max-w-5xl mx-auto py-20 space-y-24">
-      {/* 1. Intro / Story */}
-      <div className="flex flex-col sm:flex-row md:flex-row items-center gap-10">
-        <Image
-          src="/images/kaweesi-port.jpg"
-          alt="Kaweesi Matia"
-          width={384}
-          height={576}
-          priority
-          className="sm:w-56 md:w-56 lg:w-64 h-auto rounded-2xl shadow-md"
-        />
+    <section className="py-2 sm:py-4">
+      <div className="grid gap-12 lg:grid-cols-[280px_1fr] lg:items-stretch lg:gap-16">
+        <div className="relative mx-auto aspect-[4/5] w-full max-w-xs overflow-hidden rounded-2xl shadow-lg lg:mx-0 lg:aspect-auto lg:h-full lg:min-h-0 lg:max-w-none">
+          <Image
+            src="/images/kaweesi-port.jpg"
+            alt="Kaweesi Matia"
+            fill
+            priority
+            sizes="(min-width: 1024px) 280px, 320px"
+            className="object-cover object-top"
+          />
+        </div>
 
         <div>
-          <h1 className="text-4xl font-bold mb-4">About Me</h1>
-          <p className="text-gray-700 leading-relaxed">
-           I’m a full-stack software developer with a strong foundation in building modern, scalable web applications. My experience spans frontend and backend development, working with technologies such as React, JavaScript, Python, FastAPI, Node.js, Ruby on Rails, and SQL. I enjoy turning complex requirements into clean, intuitive, and reliable digital solutions. I also build data-driven and AI-powered solutions using technologies such as Python and FastAPI to enhance applications, automate processes, and solve real-world problems. Beyond development, I have experience mentoring and teaching aspiring developers, which has strengthened my ability to communicate technical ideas and collaborate effectively.
-
+          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-indigo-600">
+            About
+          </p>
+          <h1 className="text-4xl font-bold tracking-tight text-slate-900">
+            Full-Stack Software Engineer Building End-to-End Products
+          </h1>
+          <p className="mt-6 max-w-2xl text-[17px] leading-8 text-slate-600">
+            I&apos;m a full-stack software engineer focused on building
+            end-to-end web applications and backend systems. I work across
+            React frontends and Python or Node.js services, with experience in
+            FastAPI, REST APIs, SQL, PostgreSQL, MongoDB, and modern
+            application architecture. I also use AI-assisted development and
+            automation to improve engineering workflows and product
+            capabilities. My experience in mentoring and code review has
+            strengthened my approach to architecture, maintainability, and
+            technical communication.
           </p>
         </div>
       </div>
 
-      {/* 2. What I Do */}
-      <div>
-        <h2 className="text-3xl font-semibold mb-6">What I Do</h2>
-        <ul className="list-disc pl-6 text-gray-700 space-y-2">
-          <li>
-            Build modern, responsive web applications using React, JavaScript,
-            and Tailwind CSS
-          </li>
-          <li>
-            Build high-performance backend services and RESTful APIs using
-            Python and FastAPI
-          </li>
-           <li>
-    Develop data-driven applications using Python, Pandas, PostgreSQL, and
-    SQLAlchemy
-  </li>
-  <li>
-    Design secure APIs with JWT authentication, role-based access control, and
-    scalable backend architecture
-  </li>
-   <li>
-    Integrate Python and FastAPI services with modern React frontends to build
-    complete full-stack applications
-  </li>
-  <li>
-    Develop and integrate AI-powered features to automate workflows and solve
-    real-world problems
-  </li>
-          <li>
-            Develop scalable full-stack applications with Node.js, Express, Ruby
-            on Rails, and RESTful APIs
-          </li>
-          <li>
-            Design and work with relational and NoSQL databases including MySQL
-            and MongoDB
-          </li>
-          <li>
-            Develop and integrate AI-powered features to automate workflows and
-            solve real-world problems
-          </li>
-          <li>
-            Collaborate, mentor, and apply modern development practices to
-            deliver clean, maintainable software
-          </li>
-        </ul>
+      <div className="mt-24 grid gap-8 md:grid-cols-3">
+        {[
+          {
+            title: "Product-focused",
+            body: "I start from the user workflow — dashboards, orders, jobs, and deliveries — and translate those requirements into maintainable interfaces, APIs, and data models.",
+          },
+          {
+            title: "API-first",
+            body: "I design clean, documented REST APIs with authentication, authorization, and well-defined contracts that frontend applications can depend on. Experienced with FastAPI and Express for building maintainable backend services.",
+          },
+          {
+            title: "Collaborative & Remote",
+            body: "Experienced working with distributed teams, Git-based development workflows, code review, Agile delivery, and developer mentoring.",
+          },
+        ].map((item) => (
+          <div
+            key={item.title}
+            className="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm sm:p-8"
+          >
+            <h2 className="text-lg font-semibold text-slate-900">{item.title}</h2>
+            <p className="mt-2 text-sm leading-relaxed text-slate-600">
+              {item.body}
+            </p>
+          </div>
+        ))}
+      </div>
 
-        <div className="grid grid-cols-3 sm:grid-cols-5 gap-8 mt-10">
-          {topTech.map((item) => (
-            <div
-              key={item.name}
-              className="relative flex flex-col items-center text-center group"
+      <div className="mt-24">
+        <h2 className="mb-8 text-2xl font-bold text-slate-900">
+          Core Engineering Focus
+        </h2>
+        <ul className="grid gap-4 text-slate-700 sm:grid-cols-2">
+          {[
+            "Full-stack web applications with React, Next.js, and Tailwind CSS",
+            "Python backend services and REST APIs with FastAPI",
+            "Node.js, Express, and MongoDB application backends",
+            "Data-driven applications using PostgreSQL, SQLAlchemy, and Pandas",
+            "Authentication and authorization with JWT, RBAC, and protected routes",
+            "Code review, mentoring, and maintainable Git-based development",
+          ].map((item) => (
+            <li
+              key={item}
+              className="flex gap-3 rounded-xl border border-slate-200 bg-white px-5 py-4 text-sm leading-relaxed"
             >
-              <img
-                src={item.icon}
-                alt={item.name}
-                className="h-16 w-auto max-w-[4rem] object-contain mb-2 transform transition-transform duration-200 group-hover:scale-110"
-              />
-              <span className="absolute bottom-[-1.5rem] text-xs text-gray-700 opacity-0 group-hover:opacity-100 transition-opacity">
-                {item.name}
-              </span>
-            </div>
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-600" />
+              {item}
+            </li>
           ))}
+        </ul>
+      </div>
+
+      <div className="mt-12 flex flex-wrap gap-3">
+        {topTech.map((item) => (
+          <span
+            key={item.name}
+            className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-800"
+          >
+            <img src={item.icon} alt="" className="h-4 w-4 object-contain" />
+            {item.name}
+          </span>
+        ))}
+      </div>
+
+      <div className="mt-24 grid gap-12 lg:grid-cols-2 lg:gap-16">
+        <div>
+          <h2 className="mb-8 text-2xl font-bold text-slate-900">Experience</h2>
+          <Experience />
+        </div>
+        <div>
+          <h2 className="mb-8 text-2xl font-bold text-slate-900">
+            Engineering Foundation
+          </h2>
+          <ul className="space-y-4 text-sm leading-relaxed text-slate-600">
+            <li className="rounded-2xl border border-slate-200 bg-white p-6">
+              Full-stack MERN development across React interfaces, Node.js
+              services, Express APIs, and MongoDB.
+            </li>
+            <li className="rounded-2xl border border-slate-200 bg-white p-6">
+              Python backend development with FastAPI, REST APIs, SQL, and
+              PostgreSQL.
+            </li>
+            <li className="rounded-2xl border border-slate-200 bg-white p-6">
+              Telecommunication engineering background with a systems-oriented
+              approach to reliability, infrastructure, and technical
+              constraints.
+            </li>
+          </ul>
         </div>
       </div>
 
-      {/* 3. How I Work */}
-      <div>
-        <h2 className="text-3xl font-semibold mb-6">How I Work</h2>
-        <p className="text-gray-700 leading-relaxed">
-          My approach to development is practical, collaborative, and focused on
-          solving real-world problems. I value clean, maintainable code,
-          intuitive user experiences, and efficient development practices. I’m
-          comfortable working independently or as part of a team, using tools
-          such as Git and GitHub, Agile methodologies, and modern development
-          workflows. I also leverage AI technologies to build smarter
-          applications, automate processes, and improve the efficiency of
-          software solutions.
+      <div className="mt-20 rounded-3xl bg-slate-900 px-8 py-16 text-center text-white sm:px-14 sm:py-20 md:px-20">
+        <h2 className="text-2xl font-bold">Open to New Opportunities</h2>
+        <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-slate-300">
+          I&apos;m open to remote software engineering opportunities where I
+          can contribute across frontend, backend, data, and application
+          architecture.
         </p>
-      </div>
-
-      {/* 4. Experience Snapshot */}
-      <div>
-        <h2 className="text-3xl font-semibold mb-6">Experience</h2>
-        <div className="grid md:grid-cols-2 gap-6 text-gray-700">
-          <div>
-            <h3 className="font-bold">Recent Work</h3>
-            <ul className="list-disc pl-5 space-y-2 mt-2">
-              <li>
-                <strong>Software Engineer · Veroskills (USA, Remote)</strong> —
-               Developed React frontends and backend services using Node.js/Express, Python, and FastAPI, while collaborating with cross-functional teams to deliver scalable web applications.
-
-              </li>
-              <li>
-                <strong>Code Reviewer · Microverse</strong> — Mentored junior
-                developers, reviewed production code, and promoted clean code,
-                Git workflows, and Test-Driven Development practices.
-              </li>
-              <li>
-                <strong>Front-End Developer · Refactory Uganda</strong> — Built
-                responsive React applications, integrated REST APIs, and
-                optimized user experiences across client projects.
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="font-bold">Earlier Experience</h3>
-            <ul className="list-disc pl-5 space-y-2 mt-2">
-              <li>
-                Full-stack MERN development, from responsive interfaces to
-                scalable backend systems
-              </li>
-              <li>
-                Full-stack application development using Python, FastAPI, and React, from modern user interfaces to secure, scalable backend APIs
-              </li>
-              <li>
-                Telecommunication engineering, software development, and modern
-                web technologies
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      {/* 5. Beyond Code */}
-      <div className="bg-gray-50 pt-8 pb-8 pr-3 pl-3 rounded-2xl">
-        <h2 className="text-3xl font-semibold mb-6">Beyond Code</h2>
-        <p className="text-gray-700 leading-relaxed">
-          When I’m not coding, I enjoy reading, researching emerging
-          technologies, and exploring new ideas in software development and AI.
-          I’m passionate about continuous learning and using technology to solve
-          real-world problems.
-        </p>
-      </div>
-
-      {/* 6. Call to Action */}
-      <div className="text-center">
-        <p className="text-gray-700 mb-6">
-          Interested in working together or seeing my full experience?
-        </p>
-        <div className="flex justify-center gap-6">
+        <div className="mt-8 flex flex-wrap justify-center gap-4">
           <a
             href="/files/kaweesi-cv.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+            className="inline-flex rounded-lg bg-indigo-500 px-5 py-2.5 text-sm font-semibold hover:bg-indigo-400"
           >
-            View CV
+            View Resume
           </a>
           <Link
             href="/contact"
-            className="px-6 py-3 border border-gray-400 rounded-lg hover:bg-gray-100 transition"
+            className="inline-flex rounded-lg border border-white/20 px-5 py-2.5 text-sm font-semibold hover:bg-white/10"
           >
-            Contact Me
+            Get in Touch
           </Link>
         </div>
       </div>

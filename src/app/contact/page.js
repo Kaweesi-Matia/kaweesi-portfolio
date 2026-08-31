@@ -1,136 +1,141 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
-import { Github, Linkedin, Facebook, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, MapPin, Send } from "lucide-react";
+
+const TO_EMAIL = "matiakaweesi@gmail.com";
 
 export default function ContactPage() {
   return <ContactContent />;
 }
 
 function ContactContent() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState("idle");
+  const [error, setError] = useState("");
 
   const socialLinks = [
     {
       href: "https://github.com/Kaweesi-Matia",
       label: "GitHub",
+      hint: "Projects and engineering work",
       icon: Github,
     },
     {
       href: "https://www.linkedin.com/in/kaweesi-matia/",
       label: "LinkedIn",
+      hint: "Professional experience and background",
       icon: Linkedin,
     },
     {
-      href: "https://www.facebook.com/kaweesi.matia.5/",
-      label: "Facebook",
-      icon: Facebook,
-    },
-    {
-      href: "https://mail.google.com/mail/?view=cm&fs=1&to=matiakaweesi@gmail.com&su=Portfolio%20Inquiry",
+      href: `mailto:${TO_EMAIL}`,
       label: "Email",
+      hint: TO_EMAIL,
       icon: Mail,
     },
   ];
 
-  function handleSubmit(e) {
-    e.preventDefault();
-
-    setIsSubmitting(true);
-
-    const form = e.currentTarget;
-
-    const name = form.elements.name.value.trim();
-    const email = form.elements.email.value.trim();
-    const message = form.elements.message.value.trim();
-
-    if (!name || !email || !message) {
-      setIsSubmitting(false);
-      return;
-    }
-
-    /*
-     * Create the email body.
-     *
-     * This information will appear inside Gmail
-     * before the visitor clicks Send.
-     */
+  function openGmailCompose(name, email, message) {
     const emailBody = `Hello Kaweesi,
 
-You have received a new message from your portfolio website.
-
-Name: ${name}
-Email: ${email}
-
-Message:
 ${message}
 
---------------------------------
-Sent from Kaweesi Matia's Portfolio
+—
+${name}
+${email}
 `;
-
-    /*
-     * Encode the subject and message so they can safely
-     * be placed inside the Gmail URL.
-     */
-    const subject = encodeURIComponent("Portfolio Inquiry");
-
+    const subject = encodeURIComponent(`Portfolio inquiry from ${name}`);
     const body = encodeURIComponent(emailBody);
-
-    /*
-     * Gmail compose URL.
-     *
-     * The visitor's Gmail compose window will open with:
-     * - To: matiakaweesi@gmail.com
-     * - Subject: Portfolio Inquiry
-     * - Body: Name, Email and Message
-     */
     const gmailUrl =
       `https://mail.google.com/mail/?view=cm&fs=1` +
-      `&to=matiakaweesi@gmail.com` +
+      `&to=${encodeURIComponent(TO_EMAIL)}` +
       `&su=${subject}` +
       `&body=${body}`;
 
-    /*
-     * Open Gmail in a new tab.
-     */
-    window.open(gmailUrl, "_blank", "noopener,noreferrer");
+    const opened = window.open(gmailUrl, "_blank", "noopener,noreferrer");
+    if (!opened) {
+      window.location.href = `mailto:${TO_EMAIL}?subject=${subject}&body=${body}`;
+    }
+  }
 
-    setIsSubmitting(false);
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setError("");
+    setStatus("submitting");
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const name = String(formData.get("name") || "").trim();
+    const email = String(formData.get("email") || "").trim();
+    const message = String(formData.get("message") || "").trim();
+
+    if (!name || !email || !message) {
+      setStatus("idle");
+      setError("Please fill in your name, email, and message.");
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message }),
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (response.ok && data.ok) {
+        form.reset();
+        setStatus("sent");
+        return;
+      }
+
+      openGmailCompose(name, email, message);
+      setStatus("gmail");
+    } catch {
+      openGmailCompose(name, email, message);
+      setStatus("gmail");
+    }
   }
 
   return (
-    <section className="max-w-6xl mx-auto px-0 sm:px-4 md:px-6 py-16 space-y-14">
-      {/* Top hero */}
-      <div className="grid md:grid-cols-2 gap-10 md:gap-12 items-center">
+    <section className="py-2 sm:py-4">
+      <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
         <div>
-          <h1 className="text-5xl font-extrabold tracking-tight mb-3">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-indigo-600">
             Contact
+          </p>
+          <h1 className="text-4xl font-bold tracking-tight text-slate-900">
+            Let&apos;s Connect
           </h1>
-
-          <p className="text-gray-600 mb-8">
-            Get in touch via social media or send me an email. I&apos;m always
-            happy to talk about projects, collaboration, or anything
-            dev-related.
+          <p className="mt-4 max-w-lg text-[17px] leading-relaxed text-slate-600">
+            I&apos;m open to full-time, contract, and remote software
+            engineering opportunities. I typically respond within one business
+            day.
+          </p>
+          <p className="mt-5 flex items-center gap-2 text-sm text-slate-500">
+            <MapPin className="h-4 w-4 shrink-0" />
+            Uganda · Open to Remote Software Engineering Opportunities
           </p>
 
-          {/* Social links */}
-          <ul className="grid grid-cols-2 gap-x-10 gap-y-6 sm:grid-cols-2">
-            {socialLinks.map(({ href, label, icon: Icon }) => (
+          <ul className="mt-12 space-y-4">
+            {socialLinks.map(({ href, label, hint, icon: Icon }) => (
               <li key={label}>
                 <a
                   href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-3"
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel={
+                    href.startsWith("http") ? "noopener noreferrer" : undefined
+                  }
+                  className="flex items-center gap-4 rounded-xl border border-slate-200 bg-white p-5 transition hover:border-indigo-200 hover:shadow-sm"
                 >
-                  <span className="grid place-items-center w-10 h-10 rounded-full bg-gray-100 text-gray-700 group-hover:bg-gray-200 transition">
+                  <span className="grid h-11 w-11 place-items-center rounded-lg bg-indigo-50 text-indigo-700">
                     <Icon size={18} />
                   </span>
-
-                  <span className="text-gray-700 group-hover:underline">
-                    {label}
+                  <span>
+                    <span className="block text-sm font-semibold text-slate-900">
+                      {label}
+                    </span>
+                    <span className="text-sm text-slate-500">{hint}</span>
                   </span>
                 </a>
               </li>
@@ -138,116 +143,114 @@ Sent from Kaweesi Matia's Portfolio
           </ul>
         </div>
 
-        {/* Photo */}
-        <div className="relative w-full overflow-hidden rounded-2xl shadow-md">
-          <Image
-            src="/images/kaweesi-port.jpg"
-            alt="Kaweesi Matia"
-            width={1200}
-            height={900}
-            className="w-full h-[260px] sm:h-[320px] md:h-[360px] lg:h-[420px] object-cover"
-            priority
-          />
+        <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm md:p-12">
+          <h2 className="text-xl font-semibold text-slate-900">
+            Send me a message
+          </h2>
+          <p className="mt-1 text-sm leading-relaxed text-slate-500">
+            Have an opportunity, project, or question? Send me a message and
+            I&apos;ll get back to you as soon as possible. You can also reach
+            me directly by email.
+          </p>
+
+          {status === "sent" ? (
+            <div className="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-5 text-sm text-emerald-800">
+              Message sent. I will get back to you shortly.
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="mt-8 grid gap-6">
+              <div className="grid gap-6 sm:grid-cols-2">
+                <div>
+                  <label
+                    htmlFor="name"
+                    className="mb-1.5 block text-sm font-medium text-slate-700"
+                  >
+                    Name
+                  </label>
+                  <input
+                    id="name"
+                    type="text"
+                    name="name"
+                    required
+                    autoComplete="name"
+                    className="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
+                    placeholder="Your name"
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="mb-1.5 block text-sm font-medium text-slate-700"
+                  >
+                    Email
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    required
+                    autoComplete="email"
+                    className="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
+                    placeholder="you@example.com"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label
+                  htmlFor="message"
+                  className="mb-1.5 block text-sm font-medium text-slate-700"
+                >
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={6}
+                  required
+                  className="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
+                  placeholder="Tell me about the opportunity or project..."
+                />
+              </div>
+
+              {error && (
+                <p className="text-sm text-red-600" role="alert">
+                  {error}
+                </p>
+              )}
+
+              {status === "gmail" && (
+                <p className="text-sm text-slate-600">
+                  Gmail should be open with your message ready. Click Send
+                  there to deliver it.
+                </p>
+              )}
+
+              <button
+                type="submit"
+                disabled={status === "submitting"}
+                className="btn-primary w-full sm:w-auto disabled:cursor-not-allowed disabled:opacity-70"
+              >
+                <Send className="h-4 w-4" />
+                {status === "submitting" ? "Sending…" : "Send message"}
+              </button>
+            </form>
+          )}
         </div>
       </div>
 
-      {/* Contact form */}
-      <div className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 shadow-sm">
-        <h2 className="text-3xl font-semibold mb-6">
-          Send me an email
-        </h2>
-
-        <form
-          onSubmit={handleSubmit}
-          className="grid gap-6"
+      <div className="mt-16 text-center sm:mt-20">
+        <p className="text-sm text-slate-500">
+          Prefer to review my background first?
+        </p>
+        <a
+          href="/files/kaweesi-cv.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-2 inline-flex items-center text-sm font-semibold text-indigo-600 hover:text-indigo-800"
         >
-          {/* Name */}
-          <div className="grid md:grid-cols-2 gap-6">
-            <div>
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium text-gray-700 mb-2"
-              >
-                Name
-              </label>
-
-              <input
-                id="name"
-                type="text"
-                name="name"
-                required
-                className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Your name"
-              />
-            </div>
-
-            {/* Email */}
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700 mb-2"
-              >
-                Email
-              </label>
-
-              <input
-                id="email"
-                type="email"
-                name="email"
-                required
-                className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="you@example.com"
-              />
-            </div>
-          </div>
-
-          {/* Message */}
-          <div>
-            <label
-              htmlFor="message"
-              className="block text-sm font-medium text-gray-700 mb-2"
-            >
-              Message
-            </label>
-
-            <textarea
-              id="message"
-              name="message"
-              rows={6}
-              required
-              className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Tell me a little about your project…"
-            />
-          </div>
-
-          {/* Bottom section */}
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mt-4">
-            <p className="text-sm text-gray-500">
-              Or email me directly at{" "}
-              <a
-                href="https://mail.google.com/mail/?view=cm&fs=1&to=matiakaweesi@gmail.com&su=Portfolio%20Inquiry"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 underline"
-              >
-                matiakaweesi@gmail.com
-              </a>
-              .
-            </p>
-
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className={`w-full sm:w-auto inline-flex items-center justify-center rounded-lg px-6 py-3 font-medium transition ${
-                isSubmitting
-                  ? "bg-gray-500 text-gray-200 cursor-not-allowed"
-                  : "bg-black text-white hover:bg-gray-800 active:bg-gray-900 cursor-pointer"
-              }`}
-            >
-              {isSubmitting ? "Opening Gmail..." : "Send email"}
-            </button>
-          </div>
-        </form>
+          View Resume →
+        </a>
       </div>
     </section>
   );
