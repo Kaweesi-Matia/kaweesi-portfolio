@@ -35,8 +35,9 @@ const projects = [
       "Docker",
       "Git",
       "GitHub",
+      "Vercel",
     ],
-    liveLink: "",
+    liveLink: "https://sales-analytics-platform-pearl.vercel.app/",
     repoLink: "https://github.com/Kaweesi-Matia/sales-analytics-platform",
   },
   {
