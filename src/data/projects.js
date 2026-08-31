@@ -161,8 +161,9 @@ const projects = [
       "Tailwind CSS",
       "Git",
       "GitHub",
+      "Vercel",
     ],
-    liveLink: "",
+    liveLink: "https://job-connect-a7js.vercel.app/",
     repoLink: "https://github.com/Kaweesi-Matia/jobConnect",
   },
   {
