@@ -208,8 +208,9 @@ const projects = [
       "Framer Motion",
       "Git",
       "GitHub",
+      "Vercel",
     ],
-    liveLink: "",
+    liveLink: "https://property-hub-sage.vercel.app/",
     repoLink: "https://github.com/Kaweesi-Matia/propertyHub",
   },
   {
