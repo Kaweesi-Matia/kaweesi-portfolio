@@ -251,8 +251,9 @@ const projects = [
       "JWT",
       "Git",
       "GitHub",
+      "Vercel",
     ],
-    liveLink: "",
+    liveLink: "https://learnova-beta-one.vercel.app/",
     repoLink: "https://github.com/Kaweesi-Matia/Learnova",
   },
   {
