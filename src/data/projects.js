@@ -86,47 +86,6 @@ const projects = [
     repoLink: "https://github.com/Kaweesi-Matia/inventory-flow",
   },
   {
-    slug: "logiflow",
-    title: "LogiFlow",
-    subtitle: "Logistics & delivery operations",
-    year: "2025",
-    role: "Full-stack engineer",
-    shortDesc:
-      "Logistics management platform for coordinating deliveries, drivers, vehicles, customers, and route operations.",
-    longDesc:
-      "Designed and developed a full-stack logistics and delivery management system using React, Vite, Python, FastAPI, and SQLAlchemy. The platform provides a modern interface for managing delivery operations, drivers, vehicles, customers, routes, and logistics workflows. Implemented secure JWT authentication and role-based access control, RESTful APIs with FastAPI, relational data management with SQLAlchemy, and responsive React interfaces for efficient logistics operations.",
-    highlights: [
-      "Role-based access for operators, drivers, and administrators",
-      "End-to-end workflows for deliveries, vehicles, customers, and routes",
-      "Secure JWT auth and REST APIs on FastAPI + SQLAlchemy",
-    ],
-    mainImage: "/images/projects/foodhub/logiflow-1.PNG",
-    gallery: [
-      "/images/projects/foodhub/logiflow-1.PNG",
-      "/images/projects/foodhub/logiflow-2.PNG",
-      "/images/projects/foodhub/logiflow-3.PNG",
-      "/images/projects/foodhub/logiflow-4.PNG",
-      "/images/projects/foodhub/logiflow-5.PNG",
-      "/images/projects/foodhub/logiflow-6.PNG",
-    ],
-    tech: [
-      "React",
-      "Vite",
-      "Python",
-      "FastAPI",
-      "SQLAlchemy",
-      "PostgreSQL",
-      "JWT",
-      "REST API",
-      "JavaScript",
-      "Git",
-      "GitHub",
-    ],
-    liveLink: "",
-    repoLink:
-      "https://github.com/Kaweesi-Matia/LogiFlow-Logistics-Delivery-Management-System",
-  },
-  {
     slug: "jobconnect",
     title: "JobConnect",
     subtitle: "Job marketplace",
