@@ -3,7 +3,7 @@ import ProjectsPreview from "../components/ProjectsPreview";
 export const metadata = {
   title: "Work",
   description:
-    "Selected full-stack projects by Kaweesi Matia — analytics, inventory, logistics, hiring, real estate, learning, and commerce.",
+    "Selected full-stack projects by Kaweesi Matia — analytics, inventory, hiring, real estate, learning, and commerce.",
 };
 
 export default function Projects() {

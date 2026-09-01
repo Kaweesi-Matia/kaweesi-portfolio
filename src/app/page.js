@@ -44,7 +44,7 @@ export default function Home() {
             </div>
             <dl className="mt-8 grid w-full max-w-xl grid-cols-3 gap-x-4 gap-y-6 border-t border-slate-200 pt-6">
               {[
-                { value: "7+", label: "Shipped Projects" },
+                { value: "6+", label: "Shipped Projects" },
                 { value: "Full-Stack", label: "React + APIs" },
                 { value: "Python + Node.js", label: "Backend Engineering" },
               ].map((item) => (
