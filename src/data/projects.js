@@ -299,7 +299,7 @@ const projects = [
       "Vercel",
       "Render",
     ],
-    liveLink: "https://food-gbmb16rpl-kaweesimatias-projects.vercel.app/",
+    liveLink: "https://food-hub-rust-kappa.vercel.app/",
     repoLink: "https://github.com/Kaweesi-Matia/FoodHub",
   },
 ];
