@@ -80,8 +80,9 @@ const projects = [
       "Docker",
       "Git",
       "GitHub",
+      "Vercel",
     ],
-    liveLink: "",
+    liveLink: "https://inventory-flow-one-phi.vercel.app/",
     repoLink: "https://github.com/Kaweesi-Matia/inventory-flow",
   },
   {
