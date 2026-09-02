@@ -38,8 +38,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={poppins.variable}>
-      <body className="min-h-screen bg-slate-50 text-slate-900 antialiased">
+    <html lang="en" className={poppins.variable} suppressHydrationWarning>
+      <body
+        className="min-h-screen bg-slate-50 text-slate-900 antialiased"
+        suppressHydrationWarning
+      >
         <Header />
         <main className="shell py-8 sm:py-10 lg:py-12">
           <FadeInWrapper>{children}</FadeInWrapper>
