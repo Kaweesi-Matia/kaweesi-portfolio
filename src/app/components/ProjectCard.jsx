@@ -78,7 +78,7 @@ export default function ProjectCard({
         </p>
 
         <div className="mt-4 flex flex-wrap gap-1.5">
-          {tech.map((t) => (
+          {tech.slice(0, 6).map((t) => (
             <span
               key={t}
               className="inline-flex items-center gap-1 rounded-md bg-slate-100 px-2 py-1 text-[11px] font-medium text-slate-700"

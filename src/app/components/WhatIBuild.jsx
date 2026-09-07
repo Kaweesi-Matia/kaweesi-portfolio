@@ -1,19 +1,19 @@
 const offerings = [
   {
-    title: "Full-Stack Applications",
-    body: "End-to-end web applications using React, Node.js, Python, REST APIs, authentication, and modern databases.",
+    title: "Full-stack applications",
+    body: "End-to-end web apps with React, Node.js or Python, REST APIs, authentication, and a real data model.",
   },
   {
     title: "Backend & APIs",
-    body: "Secure, maintainable APIs using FastAPI, Express, SQLAlchemy, MongoDB, and PostgreSQL.",
+    body: "Maintainable APIs with FastAPI or Express, JWT auth, SQLAlchemy or Mongoose, PostgreSQL and MongoDB.",
   },
   {
-    title: "Data & Business Intelligence",
-    body: "Data-driven applications and analytics platforms using Python, Pandas, SQL, and interactive dashboards.",
+    title: "Data & dashboards",
+    body: "Import paths, SQL models, and React dashboards for sales, inventory, and operational KPIs.",
   },
   {
-    title: "AI-Ready Software",
-    body: "Backend and data systems designed to integrate AI features, automation, intelligent workflows, and data processing.",
+    title: "Role-based operations",
+    body: "RBAC, warehouse and marketplace workflows, and admin vs customer surfaces that do not share one permission set.",
   },
 ];
 
@@ -24,8 +24,8 @@ export default function WhatIBuild() {
         What I build
       </h2>
       <p className="mt-3 mb-8 max-w-2xl text-[15px] leading-7 text-slate-600">
-        I build complete software systems—from responsive interfaces and APIs
-        to databases, analytics, and AI-ready backend services.
+        Complete systems—interfaces, APIs, databases, and the workflows teams
+        run every day.
       </p>
       <div className="grid gap-5 sm:grid-cols-2">
         {offerings.map((item) => (

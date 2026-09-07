@@ -31,8 +31,8 @@ export default function Footer() {
         <div className="max-w-sm">
           <p className="text-sm font-semibold text-slate-900">Kaweesi Matia</p>
           <p className="mt-2 text-sm leading-relaxed text-slate-600">
-            Full-stack software engineer. Real-world applications, data systems,
-            and AI-ready products.
+            Full-stack software engineer. End-to-end applications and data
+            systems.
           </p>
         </div>
 
@@ -79,7 +79,7 @@ export default function Footer() {
             <Linkedin size={18} />
           </a>
           <a
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=matiakaweesi@gmail.com&su=Portfolio%20Inquiry"
+            href="mailto:matiakaweesi@gmail.com?subject=Portfolio%20Inquiry"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Email"

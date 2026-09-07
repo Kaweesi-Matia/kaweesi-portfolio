@@ -5,14 +5,35 @@ const projects = [
     subtitle: "Business intelligence platform",
     year: "2025",
     role: "Full-stack engineer",
+    featured: true,
     shortDesc:
-      "Business intelligence platform for analyzing sales performance, revenue trends, customer behavior, product performance, and operational KPIs.",
+      "Import sales data and read revenue, product, and customer KPIs from one dashboard instead of a pile of spreadsheets.",
+    problem:
+      "Sales performance lived in spreadsheets. Revenue, product mix, and customer behavior were hard to compare, and there was no single place to watch KPIs after a data import.",
+    users:
+      "Operators and analysts who need to upload sales records and immediately see trends, not rebuild charts by hand.",
+    decisions: [
+      {
+        title: "Analytics in Python, not only in the UI",
+        body: "FastAPI and Pandas own the import and aggregation path so the React app consumes ready KPI payloads instead of crunching rows in the browser.",
+      },
+      {
+        title: "PostgreSQL for sales facts",
+        body: "A relational model keeps products, customers, and transactions joinable. That is the difference between a chart demo and a queryable BI store.",
+      },
+      {
+        title: "JWT APIs in front of the dashboards",
+        body: "Every dashboard call goes through authenticated REST endpoints. The UI is a client, not the source of truth.",
+      },
+    ],
+    result:
+      "A working import-to-dashboard loop: load sales data, then inspect revenue, products, customers, and operational KPIs in Recharts views backed by PostgreSQL.",
     longDesc:
-      "Designed and developed a full-stack business intelligence and sales analytics platform using React, FastAPI, Python, and PostgreSQL. The platform enables users to import and analyze sales data, monitor key performance indicators, identify revenue trends, and explore product and customer performance through interactive dashboards. Implemented RESTful APIs with FastAPI, analytical workflows with Python, relational data modeling with PostgreSQL, and interactive React dashboards for presenting business insights.",
+      "Full-stack business intelligence platform using React, FastAPI, Python, and PostgreSQL. Users import sales data, then monitor KPIs, revenue trends, and product and customer performance through interactive dashboards.",
     highlights: [
       "Interactive dashboards for revenue, products, customers, and KPIs",
-      "Python analytics pipeline with FastAPI, Pandas, and PostgreSQL",
-      "JWT-secured REST APIs and Dockerized deployment workflow",
+      "Python analytics path with FastAPI, Pandas, and PostgreSQL",
+      "JWT-secured REST APIs and a Dockerized deploy workflow",
     ],
     mainImage: "/images/projects/foodhub/sales-analytics-1.PNG",
     gallery: [
@@ -28,14 +49,9 @@ const projects = [
       "PostgreSQL",
       "SQLAlchemy",
       "Pandas",
-      "Pydantic",
-      "REST API",
       "JWT",
       "Recharts",
       "Docker",
-      "Git",
-      "GitHub",
-      "Vercel",
     ],
     liveLink: "https://sales-analytics-platform-pearl.vercel.app/",
     repoLink: "https://github.com/Kaweesi-Matia/sales-analytics-platform",
@@ -46,14 +62,35 @@ const projects = [
     subtitle: "Inventory & warehouse operations",
     year: "2026",
     role: "Full-stack engineer",
+    featured: true,
     shortDesc:
-      "Inventory operations platform for managing products, stock levels, warehouse transfers, and role-based supply chain workflows.",
+      "Role-aware inventory system for products, stock, warehouse transfers, and day-to-day supply-chain work.",
+    problem:
+      "Inventory tools that give every user the same screen break down as soon as warehouse, procurement, and sales need different actions. Stock movements and transfers need a real data model, not a single products table.",
+    users:
+      "Admin, inventory, warehouse, procurement, and sales roles—each with a different daily workflow.",
+    decisions: [
+      {
+        title: "RBAC first, not as a later patch",
+        body: "Access is split across five roles so warehouse transfers and sales views are not the same permission set wearing a different label.",
+      },
+      {
+        title: "Stock as movements, not a single number",
+        body: "PostgreSQL and SQLAlchemy model products, warehouses, orders, and transfers so stock changes are recorded, not overwritten.",
+      },
+      {
+        title: "FastAPI as the operations contract",
+        body: "React talks to JWT-secured REST endpoints. The UI can change; the inventory rules stay on the server.",
+      },
+    ],
+    result:
+      "An operations app where role, warehouse, and transfer workflows stay consistent from API to dashboard—not a catalog with a stock field.",
     longDesc:
-      "Designed and developed a full-stack inventory and supply chain operations platform using React, Vite, Python, FastAPI, and PostgreSQL. The system supports product catalogs, warehouse stock, purchase and customer orders, warehouse transfers, and operational dashboards with role-aware access for admin, inventory, warehouse, procurement, and sales users. Implemented JWT authentication, RESTful APIs with FastAPI, relational data modeling with PostgreSQL and SQLAlchemy, and React interfaces for day-to-day inventory operations.",
+      "Full-stack inventory and supply-chain platform using React, FastAPI, and PostgreSQL. Covers catalogs, warehouse stock, purchase and customer orders, transfers, and role-aware dashboards.",
     highlights: [
-      "Role-based access across admin, inventory, warehouse, procurement, and sales workflows",
+      "Role-based access for admin, inventory, warehouse, procurement, and sales",
       "Warehouse transfers, stock movements, and operations dashboards",
-      "JWT-secured REST APIs on FastAPI with PostgreSQL and SQLAlchemy",
+      "JWT-secured FastAPI services on PostgreSQL and SQLAlchemy",
     ],
     mainImage: "/images/projects/inventory-flow/inventory-1.png",
     gallery: [
@@ -65,22 +102,14 @@ const projects = [
     ],
     tech: [
       "React",
-      "Vite",
-      "Tailwind CSS",
-      "Axios",
-      "Recharts",
-      "Python",
       "FastAPI",
-      "SQLAlchemy",
       "PostgreSQL",
-      "Pydantic",
+      "SQLAlchemy",
+      "Python",
       "JWT",
-      "REST API",
-      "Pandas",
+      "Recharts",
+      "Tailwind CSS",
       "Docker",
-      "Git",
-      "GitHub",
-      "Vercel",
     ],
     liveLink: "https://inventory-flow-one-phi.vercel.app/",
     repoLink: "https://github.com/Kaweesi-Matia/inventory-flow",
@@ -91,14 +120,30 @@ const projects = [
     subtitle: "Job marketplace",
     year: "2024",
     role: "Full-stack engineer",
+    featured: true,
     shortDesc:
-      "Full-stack job marketplace enabling candidates and employers to manage profiles, job listings, applications, and authentication.",
+      "Marketplace where candidates and employers manage profiles, listings, and applications behind JWT auth.",
+    problem:
+      "Hiring flows fall apart when profiles, listings, and applications are not the same product. Employers need protected posting; candidates need a path from discovery to apply.",
+    users: "Job seekers and employers sharing one marketplace with different permissions.",
+    decisions: [
+      {
+        title: "One API, two roles",
+        body: "Express routes are protected with JWT so posting, applying, and profile edits are not public CRUD.",
+      },
+      {
+        title: "MongoDB documents for listings and applications",
+        body: "Jobs and applications change shape often; a document store kept the marketplace schema flexible while the React UI stayed simple.",
+      },
+    ],
+    result:
+      "A live MERN marketplace with authenticated listing, discovery, and application workflows.",
     longDesc:
-      "Designed and developed a full-stack job platform using the MERN stack, enabling users to create accounts, manage profiles, discover job opportunities, and interact with job listings. Implemented secure authentication and authorization, protected API routes, job creation and management workflows, and a responsive React interface. Built a RESTful backend with Node.js and Express, integrated MongoDB for persistent data storage, and structured the application for maintainability and scale.",
+      "Full-stack job platform on the MERN stack. Users create accounts, manage profiles, discover jobs, and apply through protected API routes and a responsive React interface.",
     highlights: [
       "JWT authentication with protected API routes",
-      "Job posting, discovery, and profile management workflows",
-      "Responsive React UI on a Node.js, Express, and MongoDB stack",
+      "Job posting, discovery, and profile management",
+      "React UI on Node.js, Express, and MongoDB",
     ],
     mainImage: "/images/projects/foodhub/jobconnect-1.PNG",
     gallery: [
@@ -110,20 +155,7 @@ const projects = [
       "/images/projects/foodhub/jobconnect-6.PNG",
       "/images/projects/foodhub/jobconnect-7.PNG",
     ],
-    tech: [
-      "React",
-      "Node.js",
-      "Express",
-      "MongoDB",
-      "JavaScript",
-      "JWT",
-      "REST API",
-      "Mongoose",
-      "Tailwind CSS",
-      "Git",
-      "GitHub",
-      "Vercel",
-    ],
+    tech: ["React", "Node.js", "Express", "MongoDB", "JWT", "Mongoose"],
     liveLink: "https://job-connect-a7js.vercel.app/",
     repoLink: "https://github.com/Kaweesi-Matia/jobConnect",
   },
@@ -133,12 +165,28 @@ const projects = [
     subtitle: "Real estate platform",
     year: "2024",
     role: "Full-stack engineer",
+    featured: false,
     shortDesc:
-      "Real estate platform for discovering, filtering, and managing property listings with location-based map exploration.",
+      "Property listings with search, filters, and map-based exploration.",
+    problem:
+      "Listing sites that are only a card grid hide location. Buyers need filters and a map, not a static catalog.",
+    users: "People browsing and filtering properties by location and listing details.",
+    decisions: [
+      {
+        title: "Map as a first-class view",
+        body: "Leaflet sits next to search and filters so location is part of discovery, not a detail page afterthought.",
+      },
+      {
+        title: "Cloudinary for listing media",
+        body: "Property photos are stored and delivered outside the app server so the MERN API stays focused on listings and filters.",
+      },
+    ],
+    result:
+      "A MERN real-estate app with search, filters, listing detail, and map exploration.",
     longDesc:
-      "Designed and developed a full-stack real estate platform using the MERN stack, providing users with an intuitive interface for discovering and exploring properties. Implemented property listings, detailed property views, search and filtering, responsive layouts, and interactive map-based exploration. Built the backend with Node.js and Express, integrated MongoDB for persistence, and developed a React frontend focused on usability and performance.",
+      "Full-stack real estate platform on the MERN stack: listings, detail views, search and filtering, and interactive map-based exploration.",
     highlights: [
-      "Search, filters, and detailed property listing views",
+      "Search, filters, and detailed listing views",
       "Map-based exploration with Leaflet",
       "Cloudinary media handling on a MERN stack",
     ],
@@ -157,17 +205,8 @@ const projects = [
       "Node.js",
       "Express",
       "MongoDB",
-      "JavaScript",
-      "Mongoose",
-      "REST API",
-      "React Router",
-      "Tailwind CSS",
       "Leaflet",
       "Cloudinary",
-      "Framer Motion",
-      "Git",
-      "GitHub",
-      "Vercel",
     ],
     liveLink: "https://property-hub-sage.vercel.app/",
     repoLink: "https://github.com/Kaweesi-Matia/propertyHub",
@@ -178,14 +217,30 @@ const projects = [
     subtitle: "Learning management platform",
     year: "2024",
     role: "Full-stack engineer",
+    featured: false,
     shortDesc:
-      "Learning management platform for discovering courses, organizing educational content, and managing learner experiences.",
+      "Course discovery and authenticated learner workflows on a MERN stack.",
+    problem:
+      "Course catalogs without accounts are brochures. Learners need a signed-in path through content, not a public list.",
+    users: "Learners discovering courses and moving through structured content.",
+    decisions: [
+      {
+        title: "Auth before content",
+        body: "JWT gates course workflows so progress and access are account-scoped.",
+      },
+      {
+        title: "Structured learning paths in MongoDB",
+        body: "Courses and content are modeled as related documents so the React UI can present a path, not a flat file dump.",
+      },
+    ],
+    result:
+      "A live learning platform with authentication, course discovery, and structured learner flows.",
     longDesc:
-      "Designed and developed a full-stack learning platform using the MERN stack, providing learners with an organized environment for discovering and accessing educational content. Implemented user authentication, course and content management, responsive interfaces, and structured learning workflows. Built a RESTful backend with Node.js and Express, integrated MongoDB, and developed a React frontend focused on usability and accessibility.",
+      "Full-stack learning platform on the MERN stack: authentication, course and content management, and a responsive learner interface.",
     highlights: [
       "Authenticated learner experience with course workflows",
       "Content management and structured learning paths",
-      "Accessible, responsive React interface on MERN",
+      "Responsive React interface on MERN",
     ],
     mainImage: "/images/projects/foodhub/learnhub-7.PNG",
     gallery: [
@@ -197,21 +252,7 @@ const projects = [
       "/images/projects/foodhub/learnhub-5.PNG",
       "/images/projects/foodhub/learnhub-6.PNG",
     ],
-    tech: [
-      "React",
-      "Node.js",
-      "Express",
-      "MongoDB",
-      "JavaScript",
-      "Mongoose",
-      "REST API",
-      "React Router",
-      "Tailwind CSS",
-      "JWT",
-      "Git",
-      "GitHub",
-      "Vercel",
-    ],
+    tech: ["React", "Node.js", "Express", "MongoDB", "JWT", "Mongoose"],
     liveLink: "https://learnova-beta-one.vercel.app/",
     repoLink: "https://github.com/Kaweesi-Matia/Learnova",
   },
@@ -221,14 +262,30 @@ const projects = [
     subtitle: "Food ordering platform",
     year: "2024",
     role: "Full-stack engineer",
+    featured: false,
     shortDesc:
-      "Full-stack food ordering platform connecting customers with restaurants through menu discovery, ordering, authentication, and REST APIs.",
+      "Ordering flow from menu to cart to checkout, plus an admin side for restaurants.",
+    problem:
+      "Food apps fail when browse, cart, and kitchen/admin are treated as one screen. Customers need a checkout path; restaurants need order control.",
+    users: "Customers placing orders and admins managing restaurant and order state.",
+    decisions: [
+      {
+        title: "Split customer and admin surfaces",
+        body: "Ordering and restaurant management are separate interfaces on the same API so admin actions cannot hide inside the customer cart.",
+      },
+      {
+        title: "Auth on the order path",
+        body: "JWT and Express protect accounts and orders so checkout is not an anonymous write to MongoDB.",
+      },
+    ],
+    result:
+      "A live food-ordering app with discovery, cart, checkout, and an admin workflow.",
     longDesc:
-      "Built a full-stack food ordering platform using React, Node.js, Express, and MongoDB. The platform allows users to discover restaurants, browse food options, place orders, and manage an admin-facing restaurant workflow through an intuitive interface.",
+      "Full-stack food ordering platform using React, Node.js, Express, and MongoDB. Customers discover restaurants and place orders; admins manage restaurant and order workflows.",
     highlights: [
-      "Customer ordering flow: browse, cart, and checkout",
+      "Customer flow: browse, cart, and checkout",
       "Admin interface for restaurant and order management",
-      "MERN stack with a live Vercel deployment",
+      "MERN stack with live Vercel and Render deploys",
     ],
     mainImage: "/images/projects/foodhub/foodHub-img.PNG",
     gallery: [
@@ -238,26 +295,7 @@ const projects = [
       "/images/projects/foodhub/foodhub-cart.PNG",
       "/images/projects/foodhub/foodHub-admin-img.PNG",
     ],
-    tech: [
-      "React",
-      "Vite",
-      "JavaScript",
-      "React Router",
-      "Tailwind CSS",
-      "Axios",
-      "Lucide",
-      "Node.js",
-      "Express",
-      "MongoDB",
-      "Mongoose",
-      "JWT",
-      "REST API",
-      "bcrypt",
-      "Git",
-      "GitHub",
-      "Vercel",
-      "Render",
-    ],
+    tech: ["React", "Node.js", "Express", "MongoDB", "JWT", "Mongoose"],
     liveLink: "https://food-hub-rust-kappa.vercel.app/",
     repoLink: "https://github.com/Kaweesi-Matia/FoodHub",
   },

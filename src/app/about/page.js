@@ -16,7 +16,7 @@ const topTech = [
 export const metadata = {
   title: "About",
   description:
-    "Background, experience, and working style of Kaweesi Matia, full-stack software and AI developer.",
+    "Background, experience, and working style of Kaweesi Matia, full-stack software engineer.",
 };
 
 export default function About() {
@@ -39,18 +39,14 @@ export default function About() {
             About
           </p>
           <h1 className="text-4xl font-bold tracking-tight text-slate-900">
-            Full-Stack Software Engineer Building End-to-End Products
+            Full-stack engineer building end-to-end products
           </h1>
           <p className="mt-6 max-w-2xl text-[17px] leading-8 text-slate-600">
-            I&apos;m a full-stack software engineer focused on building
-            end-to-end web applications and backend systems. I work across
-            React frontends and Python or Node.js services, with experience in
-            FastAPI, REST APIs, SQL, PostgreSQL, MongoDB, and modern
-            application architecture. I also use AI-assisted development and
-            automation to improve engineering workflows and product
-            capabilities. My experience in mentoring and code review has
-            strengthened my approach to architecture, maintainability, and
-            technical communication.
+            I work across React frontends and Python or Node.js services—FastAPI,
+            REST APIs, PostgreSQL, MongoDB, and the data models behind
+            dashboards and operations tools. Mentoring and code review at
+            Microverse sharpened how I think about architecture,
+            maintainability, and technical communication.
           </p>
         </div>
       </div>
@@ -58,16 +54,16 @@ export default function About() {
       <div className="mt-24 grid gap-8 md:grid-cols-3">
         {[
           {
-            title: "Product-focused",
-            body: "I start from the user workflow — dashboards, orders, jobs, and deliveries — and translate those requirements into maintainable interfaces, APIs, and data models.",
+            title: "Start from the workflow",
+            body: "Dashboards, stock transfers, job applications, checkout. I translate those paths into interfaces, APIs, and data models people can run.",
           },
           {
             title: "API-first",
-            body: "I design clean, documented REST APIs with authentication, authorization, and well-defined contracts that frontend applications can depend on. Experienced with FastAPI and Express for building maintainable backend services.",
+            body: "Documented REST contracts with authentication and clear permissions. FastAPI and Express for services the frontend can depend on.",
           },
           {
-            title: "Collaborative & Remote",
-            body: "Experienced working with distributed teams, Git-based development workflows, code review, Agile delivery, and developer mentoring.",
+            title: "Remote by default",
+            body: "Distributed US product work, Git-based review, Agile delivery, and mentoring across time zones.",
           },
         ].map((item) => (
           <div
@@ -84,16 +80,16 @@ export default function About() {
 
       <div className="mt-24">
         <h2 className="mb-8 text-2xl font-bold text-slate-900">
-          Core Engineering Focus
+          Core engineering focus
         </h2>
         <ul className="grid gap-4 text-slate-700 sm:grid-cols-2">
           {[
             "Full-stack web applications with React, Next.js, and Tailwind CSS",
             "Python backend services and REST APIs with FastAPI",
             "Node.js, Express, and MongoDB application backends",
-            "Data-driven applications using PostgreSQL, SQLAlchemy, and Pandas",
-            "Authentication and authorization with JWT, RBAC, and protected routes",
-            "Code review, mentoring, and maintainable Git-based development",
+            "Data-backed apps with PostgreSQL, SQLAlchemy, and Pandas",
+            "Authentication and authorization with JWT and role-based access",
+            "Code review, mentoring, and Git-based delivery",
           ].map((item) => (
             <li
               key={item}
@@ -118,39 +114,46 @@ export default function About() {
         ))}
       </div>
 
-      <div className="mt-24 grid gap-12 lg:grid-cols-2 lg:gap-16">
-        <div>
-          <h2 className="mb-8 text-2xl font-bold text-slate-900">Experience</h2>
-          <Experience />
-        </div>
-        <div>
-          <h2 className="mb-8 text-2xl font-bold text-slate-900">
-            Engineering Foundation
-          </h2>
-          <ul className="space-y-4 text-sm leading-relaxed text-slate-600">
-            <li className="rounded-2xl border border-slate-200 bg-white p-6">
-              Full-stack MERN development across React interfaces, Node.js
-              services, Express APIs, and MongoDB.
-            </li>
-            <li className="rounded-2xl border border-slate-200 bg-white p-6">
-              Python backend development with FastAPI, REST APIs, SQL, and
-              PostgreSQL.
-            </li>
-            <li className="rounded-2xl border border-slate-200 bg-white p-6">
-              Telecommunication engineering background with a systems-oriented
-              approach to reliability, infrastructure, and technical
+      <div className="mt-24">
+        <h2 className="mb-8 text-2xl font-bold text-slate-900">Experience</h2>
+        <Experience />
+      </div>
+
+      <div className="mt-24">
+        <h2 className="mb-8 text-2xl font-bold text-slate-900">Education</h2>
+        <ul className="grid gap-4 text-sm leading-relaxed text-slate-600 md:grid-cols-3">
+          <li className="rounded-2xl border border-slate-200 bg-white p-6">
+            <p className="font-semibold text-slate-900">VeroSkills</p>
+            <p className="mt-1">Certificate, Front-End Development · 2023 – 2024</p>
+          </li>
+          <li className="rounded-2xl border border-slate-200 bg-white p-6">
+            <p className="font-semibold text-slate-900">Microverse</p>
+            <p className="mt-1">
+              Certificate, Software Engineering · 2022 – 2024
+            </p>
+            <p className="mt-2">
+              Full-time remote program: algorithms, full-stack development,
+              pair programming, and Gitflow with international teams.
+            </p>
+          </li>
+          <li className="rounded-2xl border border-slate-200 bg-white p-6">
+            <p className="font-semibold text-slate-900">Kyambogo University</p>
+            <p className="mt-1">
+              Bachelor’s, Telecommunication Engineering · 2014 – 2017
+            </p>
+            <p className="mt-2">
+              Systems background in reliability, infrastructure, and technical
               constraints.
-            </li>
-          </ul>
-        </div>
+            </p>
+          </li>
+        </ul>
       </div>
 
       <div className="mt-20 rounded-3xl bg-slate-900 px-8 py-16 text-center text-white sm:px-14 sm:py-20 md:px-20">
-        <h2 className="text-2xl font-bold">Open to New Opportunities</h2>
+        <h2 className="text-2xl font-bold">Open to new opportunities</h2>
         <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-slate-300">
-          I&apos;m open to remote software engineering opportunities where I
-          can contribute across frontend, backend, data, and application
-          architecture.
+          Remote software engineering roles where I can contribute across
+          frontend, backend, data, and application architecture.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <a

@@ -3,7 +3,7 @@ import ProjectsPreview from "../components/ProjectsPreview";
 export const metadata = {
   title: "Work",
   description:
-    "Selected full-stack projects by Kaweesi Matia — analytics, inventory, hiring, real estate, learning, and commerce.",
+    "Full-stack projects by Kaweesi Matia — sales analytics, inventory operations, hiring, real estate, learning, and commerce.",
 };
 
 export default function Projects() {
@@ -14,8 +14,8 @@ export default function Projects() {
           Selected engineering work
         </h1>
         <p className="mt-4 text-[17px] leading-8 text-slate-600">
-          Selected projects demonstrating end-to-end engineering across React,
-          Python, Node.js, APIs, databases, analytics, and cloud deployment.
+          Sales Analytics and Inventory Flow first—then marketplaces and
+          operations apps on React, Python, Node.js, and real databases.
         </p>
       </div>
       <ProjectsPreview showIntro={false} />

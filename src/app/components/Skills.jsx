@@ -6,7 +6,6 @@ const groups = [
       { name: "TypeScript", icon: "/icons/typescript.svg" },
       { name: "React", icon: "/icons/react.svg" },
       { name: "Next.js", icon: "/icons/nextjs.svg" },
-      { name: "React Native", icon: "/icons/react-native.svg" },
       { name: "HTML", icon: "/icons/html.svg" },
       { name: "CSS", icon: "/icons/css-3.svg" },
       { name: "Tailwind CSS", icon: "/icons/tailwind-css.svg" },
@@ -19,23 +18,18 @@ const groups = [
       { name: "FastAPI", icon: "/icons/fastapi.svg" },
       { name: "Node.js", icon: "/icons/nodejs.svg" },
       { name: "Express", icon: "/icons/express.svg" },
+      { name: "SQLAlchemy", icon: "/icons/sqlalchemy.svg" },
       { name: "JWT", icon: "/icons/jsonwebtokens.svg" },
-      { name: "PHP", icon: "/icons/php.svg" },
-      { name: "WordPress", icon: "/icons/wordpress.svg" },
     ],
   },
   {
-    title: "Data & tooling",
+    title: "Data & infra",
     items: [
       { name: "PostgreSQL", icon: "/icons/postgresql.svg" },
-      { name: "MySQL", icon: "/icons/mysql.svg" },
       { name: "MongoDB", icon: "/icons/mongodb.svg" },
-      { name: "SQLAlchemy", icon: "/icons/sqlalchemy.svg" },
+      { name: "MySQL", icon: "/icons/mysql.svg" },
       { name: "Pandas", icon: "/icons/pandas.svg" },
       { name: "Docker", icon: "/icons/docker.svg" },
-      { name: "Git", icon: "/icons/git.svg" },
-      { name: "GitHub", icon: "/icons/github.svg" },
-      { name: "Bootstrap", icon: "/icons/bootstrap.svg" },
     ],
   },
 ];
@@ -51,8 +45,8 @@ export default function Skills() {
           Tech stack
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-[15px] leading-7 text-slate-600">
-          The stack behind end-to-end systems, data platforms, and AI-ready
-          backends—JavaScript and Python, from interfaces to APIs and stores.
+          JavaScript and Python—from React interfaces to FastAPI and Node
+          services, then PostgreSQL or MongoDB.
         </p>
       </div>
 

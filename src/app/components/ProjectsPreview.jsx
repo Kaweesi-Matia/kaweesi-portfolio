@@ -4,9 +4,15 @@ import techIcons from "@/data/techIcons";
 import ProjectCard from "./ProjectCard";
 import SectionHeading from "./SectionHeading";
 
-function ProjectGrid({ items }) {
+function ProjectGrid({ items, featuredOnly }) {
   return (
-    <div className="grid gap-7 sm:grid-cols-2 lg:gap-8">
+    <div
+      className={`grid gap-7 lg:gap-8 ${
+        featuredOnly
+          ? "sm:grid-cols-2 xl:grid-cols-3"
+          : "sm:grid-cols-2"
+      }`}
+    >
       {items.map((project) => (
         <ProjectCard
           key={project.slug}
@@ -25,17 +31,25 @@ function ProjectGrid({ items }) {
   );
 }
 
-export default function ProjectsPreview({ showIntro = true, showAllLink = false }) {
+export default function ProjectsPreview({
+  showIntro = true,
+  showAllLink = false,
+  featuredOnly = false,
+}) {
+  const items = featuredOnly
+    ? projects.filter((project) => project.featured)
+    : projects;
+
   return (
     <section className={showIntro ? "section-y" : "pt-8 pb-4 sm:pt-10"}>
       {showIntro && (
         <SectionHeading
           title="Selected engineering work"
-          description="A selection of end-to-end software solutions spanning modern frontend and backend technologies, data systems, APIs, and cloud deployment."
+          description="Two data-backed systems and one marketplace. The rest of the work is on the Work page."
         />
       )}
 
-      <ProjectGrid items={projects} />
+      <ProjectGrid items={items} featuredOnly={featuredOnly} />
 
       {showAllLink && (
         <div className="mt-12 text-center">

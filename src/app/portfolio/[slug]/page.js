@@ -1,32 +1,51 @@
-"use client";
-
 import Link from "next/link";
-import { use } from "react";
+import { notFound } from "next/navigation";
 import { ArrowLeft, ExternalLink, Github } from "lucide-react";
 import projects from "@/data/projects";
 import techIcons from "@/data/techIcons";
 import ProjectMediaSlider from "@/app/components/ProjectMediaSlider";
+import { SITE_URL } from "@/lib/site";
 
-export default function ProjectPage({ params: paramsPromise }) {
-  const { slug } = use(paramsPromise);
-  const project = projects.find((p) => p.slug === slug);
+export function generateStaticParams() {
+  return projects.map((project) => ({ slug: project.slug }));
+}
+
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const project = projects.find((item) => item.slug === slug);
 
   if (!project) {
-    return (
-      <section className="py-24 text-center">
-        <p className="text-slate-600">Project not found.</p>
-        <Link href="/portfolio" className="mt-4 inline-block text-indigo-600">
-          Back to work
-        </Link>
-      </section>
-    );
+    return { title: "Project not found" };
   }
 
-  const allMedia = [
-    ...(project.gallery?.length
-      ? project.gallery
-      : [project.mainMedia ?? project.mainImage]),
-  ];
+  const title = `${project.title} case study`;
+  const description = project.shortDesc;
+  const path = `/portfolio/${project.slug}`;
+
+  return {
+    title,
+    description,
+    alternates: { canonical: path },
+    openGraph: {
+      title: `${project.title} | Kaweesi Matia`,
+      description,
+      url: `${SITE_URL}${path}`,
+      images: [{ url: project.mainImage, alt: `${project.title} screenshot` }],
+    },
+  };
+}
+
+export default async function ProjectPage({ params }) {
+  const { slug } = await params;
+  const project = projects.find((item) => item.slug === slug);
+
+  if (!project) {
+    notFound();
+  }
+
+  const allMedia = project.gallery?.length
+    ? project.gallery
+    : [project.mainMedia ?? project.mainImage];
 
   return (
     <article className="py-2 sm:py-4">
@@ -44,7 +63,9 @@ export default function ProjectPage({ params: paramsPromise }) {
       <h1 className="mt-2 text-4xl font-bold tracking-tight text-slate-900">
         {project.title}
       </h1>
-      <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-600">{project.shortDesc}</p>
+      <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-600">
+        {project.shortDesc}
+      </p>
       <p className="mt-4 text-sm text-slate-500">
         {project.role} · {project.year}
       </p>
@@ -55,8 +76,50 @@ export default function ProjectPage({ params: paramsPromise }) {
 
       <div className="grid gap-12 lg:grid-cols-[1.4fr_0.6fr] lg:gap-16">
         <div>
-          <h2 className="text-xl font-semibold text-slate-900">Overview</h2>
-          <p className="mt-4 leading-8 text-slate-600">{project.longDesc}</p>
+          {project.problem && (
+            <>
+              <h2 className="text-xl font-semibold text-slate-900">Problem</h2>
+              <p className="mt-4 leading-8 text-slate-600">{project.problem}</p>
+              {project.users && (
+                <p className="mt-4 leading-8 text-slate-600">
+                  <span className="font-medium text-slate-800">Users. </span>
+                  {project.users}
+                </p>
+              )}
+            </>
+          )}
+
+          {project.decisions?.length > 0 && (
+            <>
+              <h2 className="mt-12 text-xl font-semibold text-slate-900">
+                Engineering decisions
+              </h2>
+              <ul className="mt-5 space-y-4">
+                {project.decisions.map((decision) => (
+                  <li
+                    key={decision.title}
+                    className="rounded-xl border border-slate-200 bg-white px-5 py-4"
+                  >
+                    <p className="text-sm font-semibold text-slate-900">
+                      {decision.title}
+                    </p>
+                    <p className="mt-1.5 text-sm leading-relaxed text-slate-600">
+                      {decision.body}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+
+          {project.result && (
+            <>
+              <h2 className="mt-12 text-xl font-semibold text-slate-900">
+                Result
+              </h2>
+              <p className="mt-4 leading-8 text-slate-600">{project.result}</p>
+            </>
+          )}
 
           {project.highlights?.length > 0 && (
             <>
